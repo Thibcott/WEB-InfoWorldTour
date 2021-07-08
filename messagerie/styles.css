@@ -1,0 +1,145 @@
+body {
+  font-family: Arial ;
+  margin: 0;
+  background-color: #90e4d3;
+  text-justify:auto;
+}
+
+
+
+
+article {
+  margin:  auto;
+  margin-top: 100px;
+  margin-bottom: 150px;
+  max-width: 1000px;
+  padding: 0 20px;
+}
+
+#conv{
+    width: 95%;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #107a65;
+  color: white;
+  display: inline-flex;
+  height: 10%;
+  padding: 2px;
+  text-align: center;
+}
+
+footer>div {
+  display: inline;
+}
+
+footer>div:first-child {
+  width: 80%;
+}
+
+footer>div>textarea {
+  font-size: 20px;
+  color: white;
+  background-color: #1abc9c;
+  height: 93%;
+  width: 100%;
+  display: inline;
+  resize: none;
+}
+
+footer>div:last-child {
+  width: 19%;
+  margin-left: 10px;
+}
+
+footer>div>button {
+  color: white;
+  border: none;
+  display: inline;
+  background-color: #169b80;
+  height: 100%;
+  width: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+footer>div>button:hover{
+  background-color: white;
+  color:#169b80
+}
+
+
+/* w3school code */
+
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container label {
+  float: left;
+  max-width: 100px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container label.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+
+/* navbar */
+.navbar {
+  overflow: hidden;
+  background-color: rgb(76, 108, 179);
+  position: fixed;
+  width: 100%;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: rgb(117, 151, 223);
+  color: white;
+}
