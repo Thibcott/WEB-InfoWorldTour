@@ -14,10 +14,10 @@ function btnSend() {
         contentType: 'application/json',
         data: JSON.stringify(message),
         processData: false,
-        success: function(data, textStatus, jQxhr) {
+        success: function (data, textStatus, jQxhr) {
             console.log(JSON.stringify(data));
         },
-        error: function(jqXhr, textStatus, errorThrown) {
+        error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
         }
     }).then(
@@ -27,18 +27,17 @@ function btnSend() {
 }
 
 function onload() {
-    setInterval(function(){  
+    setInterval(function () {
         console.log("r");
         getMessage();
-    },3000);
-    
+    }, 3000);
+
 
     User = prompt("Please enter your name:", "defuser");
     //GET pour optennir la date du jour
     fetch('http://localhost:3000/dateDuJour')
         .then(response => response.json())
         .then(response => {
-            // document.getElementById("date").innerHTML = "la date du jour : " + response.date;
             console.log("GET pour optenir la date du jour : ");
             console.log(response.date);
         })
@@ -47,26 +46,26 @@ function onload() {
 function getMessage() {
     //get pour recupere les messages
     fetch('http://localhost:3000/getMessage')
-    .then(response => response.json())
-    .then(response => {
-        //console.log(response);
-        let html = "" /*" <tr id='headTable'><th>Message</th><th>envoyer par</th></tr>"*/ ;
-        response.forEach(element => {
-            let message = "Message : " + element.mesText + " | ecrit par " + element.mesUser
-            // html += "<tr> <td> " + element.mesText + "</td><td> " + element.mesUser + "</td></tr>";
-            html += "<div class='container'><label class='right'>de : "+element.mesUser+
-                    "</label><p>"+
-                    element.mesText+
-                    "</p><span class='time-left'>"+
-                    element.mesDate+
+        .then(response => response.json())
+        .then(response => {
+            //console.log(response);
+            let html = "" /*" <tr id='headTable'><th>Message</th><th>envoyer par</th></tr>"*/;
+            response.forEach(element => {
+                let message = "Message : " + element.mesText + " | ecrit par " + element.mesUser
+                // html += "<tr> <td> " + element.mesText + "</td><td> " + element.mesUser + "</td></tr>";
+                html += "<div class='container'><label class='right'>de : " + element.mesUser +
+                    "</label><p>" +
+                    element.mesText +
+                    "</p><span class='time-left'>" +
+                    element.mesDate +
                     "</span></div>"
+            });
+            //console.log(html);
+            //sortie affichage
+            document.getElementById("conv").innerHTML = html;
         });
-        //console.log(html);
-        //sortie affichage
-        document.getElementById("conv").innerHTML = html;
-    });
 }
 // style logique
-$(function() {
-    $('html, body').animate({scrollTop:$(document).height()}, 100);
+$(function () {
+    $('html, body').animate({ scrollTop: $(document).height() }, 100);
 });

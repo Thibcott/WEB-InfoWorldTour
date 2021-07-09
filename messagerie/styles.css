@@ -17,7 +17,6 @@ article {
     width: 95%;
 }
 
-
 footer {
   position: fixed;
   left: 0;
@@ -96,7 +95,7 @@ footer>div>button:hover{
 
 .container label.right {
   float: right;
-  margin-left: 20px;
+  margin-left:20px;
   margin-right:0;
 }
 
