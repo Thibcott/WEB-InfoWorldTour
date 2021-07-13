@@ -22,12 +22,19 @@ function getVoyage() {
             let html = "" ;
             let i = 0;
             response.forEach(element => {
-                console.log(JSON.parse(element.voyData))
-                html = "<tr>  <td>"+element.voyData +" </td> <td>"+element.voyDate +" </td></tr>"+html ;
-                console.log(i);
+                let json = JSON.parse(element.voyData)
+                html =  "<tr><td>"+json.Ville +
+                        "</td><td>"+json.Pays +
+                        "</td><td>"+json.NomHebergement +
+                        "</td><td>"+json.TelHebergement +
+                        "</td><td>"+json.DateArriver +
+                        "</td><td>"+json.DateDepart +
+                        "</td><td>"+json.Divers +
+                        "</td><td>"+element.voyDate +                        
+                        "</td></tr>"+html ;
                 i++;
             });
-            console.log(response.length)
+            console.log(response.length);
             document.getElementById("historic").innerHTML =
             document.getElementById("historic").innerHTML + html;
 

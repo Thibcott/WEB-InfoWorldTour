@@ -22,6 +22,7 @@ function btnSend() {
         }
     })
 }
+
 function onload() {
 
     setInterval(function () {
@@ -58,9 +59,7 @@ function getMessage() {
                     "</p><span class='time-left'>" +
                     element.mesDate +
                     "</span></div>"
-            });
-            //console.log(html);
-            //sortie affichage
+            });    
             document.getElementById("conv").innerHTML = html;
         });
 }
