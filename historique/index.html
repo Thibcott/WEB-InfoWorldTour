@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body onload="onload()">
     <header>
         <div class="navbar">
             <a href="../index.html">InfoWorldTour</a>
@@ -18,15 +18,16 @@
             <!-- <a href="aide.html" class="right">Aide</a> -->
         </div>
     </header>
-    <article>
+    <article onload="onload()">
+        <table id="historic">
+           <tr><th>Données</th><th>Date</th><tr>
+        </table>
     </article>
     <footer>
-        <label>
-            Developed by
+           
             <a href="https://github.com/Thibcott">
-                Thibcott
+                Developed by Thibcott
             </a>
-        </label>
     </footer>
 </body>
 <script src="../jquery.js"></script>

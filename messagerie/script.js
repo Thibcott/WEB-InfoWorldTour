@@ -20,17 +20,18 @@ function btnSend() {
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(errorThrown);
         }
-    }).then(
-        // alert("message envoyer"),
-        // getMessage()
-    );
+    })
 }
-
 function onload() {
+
     setInterval(function () {
-        console.log("r");
         getMessage();
-    }, 3000);
+        $(function () {
+            console.log("JQ");
+            $('html, body').animate({ scrollTop: $(document).height() }, 5);
+        });
+        console.log("JS");
+    }, 2000);
 
 
     User = prompt("Please enter your name:", "defuser");
@@ -38,8 +39,7 @@ function onload() {
     fetch('http://localhost:3000/dateDuJour')
         .then(response => response.json())
         .then(response => {
-            console.log("GET pour optenir la date du jour : ");
-            console.log(response.date);
+           console.log("GET pour optenir la date du jour : "+response.date);
         })
 }
 
@@ -48,8 +48,7 @@ function getMessage() {
     fetch('http://localhost:3000/getMessage')
         .then(response => response.json())
         .then(response => {
-            //console.log(response);
-            let html = "" /*" <tr id='headTable'><th>Message</th><th>envoyer par</th></tr>"*/;
+            let html = "" ;
             response.forEach(element => {
                 let message = "Message : " + element.mesText + " | ecrit par " + element.mesUser
                 // html += "<tr> <td> " + element.mesText + "</td><td> " + element.mesUser + "</td></tr>";
@@ -65,7 +64,4 @@ function getMessage() {
             document.getElementById("conv").innerHTML = html;
         });
 }
-// style logique
-$(function () {
-    $('html, body').animate({ scrollTop: $(document).height() }, 100);
-});
+

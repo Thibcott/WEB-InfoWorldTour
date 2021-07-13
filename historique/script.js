@@ -1,3 +1,8 @@
+function onload(){
+    getDate();
+    getVoyage();   
+}
+
 function getDate() {
     fetch('http://localhost:3000/dateDuJour')
         .then(response => response.json())
@@ -10,14 +15,21 @@ function getDate() {
 
 //GET pour recupere l'historique des données de la db concernant les voyages 
 function getVoyage() {
-    alert()
     //get pour recupere les messages
     fetch('http://localhost:3000/getDataTravel/')
         .then(response => response.json())
         .then(response => {
-            console.log(response);
-            let html
-            //sortie affichage
-            // document.getElementById("conv").innerHTML = html;
+            let html = "" ;
+            let i = 0;
+            response.forEach(element => {
+                console.log(JSON.parse(element.voyData))
+                html = "<tr>  <td>"+element.voyData +" </td> <td>"+element.voyDate +" </td></tr>"+html ;
+                console.log(i);
+                i++;
+            });
+            console.log(response.length)
+            document.getElementById("historic").innerHTML =
+            document.getElementById("historic").innerHTML + html;
+
         });
 }
