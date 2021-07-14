@@ -1,8 +1,8 @@
+
 function onload() {
     getDate();
     getVoyage();
     // getMap();
-    
 }
 
 function getDate() {
@@ -14,7 +14,6 @@ function getDate() {
       });
 }
 function getVoyage() {
-    let location;
     //get pour recupere les messages
     fetch('http://localhost:3000/getDataTravel/')
         .then(response => response.json())
@@ -22,11 +21,33 @@ function getVoyage() {
             console.log(response)
             let idOfLast = response.length - 1;
             console.log(idOfLast)
-            let json = JSON.parse(response[idOfLast].voyData)
+            let json = JSON.parse(response[idOfLast].voyData);
             console.log(json);
-            location = json.Ville+", "+json.Pays;
+            //location
+            let location = json.Ville+", "+json.Pays;
             document.getElementById("location").innerHTML = "<h2>"+location+"</h2>";
             getMap(location);
+            //hebergement
+            let hebergementhtml = "<h3>Hebergement : " + json.NomHebergement + "<br>tel : " + json.TelHebergement+"<h3>";
+            document.getElementById("hebergement").innerHTML = hebergementhtml;
+            //date
+            let dArriver = json.DateArriver; 
+            let dDepart = json.DateDepart;
+            let diff = (Date.parse(dDepart) - Date.parse(dArriver))/1000/60/60/24;
+            console.log(dArriver+"|"+dDepart)
+            console.log(typeof(dArriver)+"|"+typeof(dDepart))
+            console.log("res : " + diff);
+            let datehtml =  "<h3>Date d'arriver  : " + dArriver + 
+                            "<br>Date de depart  : " + dDepart +
+                            "<br>Nombre de jours : " + diff +
+                            "</h3>" ;
+            document.getElementById("date").innerHTML = datehtml;
+            //divers
+            let divershtml = "<h3>Divers : </h3><textarea disabled>"+json.Divers+"</textarea>";
+            document.getElementById("divers").innerHTML =divershtml;
+            console.log(divershtml);
+
+            
         });
 
 }
