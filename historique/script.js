@@ -11,8 +11,6 @@ function getDate() {
             console.log(response.date);
         })
 }
-
-
 //GET pour recupere l'historique des données de la db concernant les voyages 
 function getVoyage() {
     //get pour recupere les messages
@@ -21,6 +19,7 @@ function getVoyage() {
         .then(response => {
             let html = "" ;
             let i = 0;
+            // console.log(response)
             response.forEach(element => {
                 let json = JSON.parse(element.voyData)
                 html =  "<tr><td>"+json.Ville +
@@ -31,12 +30,15 @@ function getVoyage() {
                         "</td><td>"+json.DateDepart +
                         "</td><td>"+json.Divers +
                         "</td><td>"+element.voyDate +                        
-                        "</td></tr>"+html ;
+                        "</td></tr>"
+                        +html ;
                 i++;
+                // console.log(json)
             });
-            console.log(response.length);
+            // console.log(response.length);
             document.getElementById("historic").innerHTML =
             document.getElementById("historic").innerHTML + html;
 
         });
 }
+// <textarea disabled></textarea>
