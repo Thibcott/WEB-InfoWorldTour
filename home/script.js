@@ -74,7 +74,7 @@ function getMap(location) {
           container: "map",
           style: "mapbox://styles/mapbox/streets-v11",
           center: feature.center,
-          zoom: 7,
+          zoom: 5,
         });
 
         // Create a marker and add it to the map.
