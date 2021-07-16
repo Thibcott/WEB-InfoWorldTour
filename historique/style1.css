@@ -97,3 +97,19 @@ footer a:hover{
   background-color:  rgb(76, 108, 179);
   color: white;
 }
+#btnAdd{
+
+  margin:20px;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+#btnAdd a{
+  color:white;
+  text-decoration: none;
+}
