@@ -1,52 +1,55 @@
 
 function onload() {
-    getDate();
-    getVoyage();
-    // getMap();
+  getDate();
+  getVoyage();
 }
 
 function getDate() {
-      //GET pour optennir la date du jour
-      fetch('http://localhost:3000/dateDuJour')
-      .then(response => response.json())
-      .then(response => {
-         console.log("GET pour optenir la date du jour : "+response.date);
-      });
+  //GET pour optennir la date du jour
+  fetch('http://localhost:3000/dateDuJour')
+  .then(response => response.json())
+  .then(response => {
+     console.log("GET pour optenir la date du jour : "+response.date);
+  });
 }
 function getVoyage() {
+  try {
     //get pour recupere les messages
     fetch('http://localhost:3000/getDataTravel/')
-        .then(response => response.json())
-        .then(response => {
-            // console.log(response)
-            let idOfLast = response.length - 1;
-            console.log(idOfLast)
-            let json = JSON.parse(response[idOfLast].voyData);
-            // console.log(json);
-            //location
-            let location = json.Ville+", "+json.Pays;
-            document.getElementById("location").innerHTML = "<h2>"+location+"</h2>";
-            getMap(location);
-            //hebergement
-            let hebergementhtml = "<h3>Hebergement : " + json.NomHebergement + "<br>tel : " + json.TelHebergement+"<h3>";
-            document.getElementById("hebergement").innerHTML = hebergementhtml;
-            //date
-            let dArriver = json.DateArriver; 
-            let dDepart = json.DateDepart;
-            let diff = (Date.parse(dDepart) - Date.parse(dArriver))/1000/60/60/24;
-            // console.log(dArriver+"|"+dDepart)
-            // console.log(typeof(dArriver)+"|"+typeof(dDepart))
-            // console.log("res : " + diff);
-            let datehtml =  "<h3>Date d'arriver  : " + dArriver + 
-                            "<br>Date de depart  : " + dDepart +
-                            "<br>Nombre de jours : " + diff +
-                            "</h3>" ;
-            document.getElementById("date").innerHTML = datehtml;
-            //divers
-            let divershtml = "<h3>Divers : </h3><p>"+json.Divers+"</p>";
-            document.getElementById("divers").innerHTML =divershtml;
-            // console.log(divershtml);
-        });
+    .then(response => response.json())
+    .then(response => {
+        let idOfLast = response.length - 1;
+        console.log(idOfLast)
+        let json = JSON.parse(response[idOfLast].voyData);
+        // console.log(json);
+        //location
+        let location = json.Ville+", "+json.Pays;
+        document.getElementById("location").innerHTML = "<h2>"+location+"</h2>";
+        getMap(location);
+        //hebergement
+        let hebergementhtml = "<h3>Hebergement : " + json.NomHebergement + "<br>tel : " + json.TelHebergement+"<h3>";
+        document.getElementById("hebergement").innerHTML = hebergementhtml;
+        //date
+        let dArriver = json.DateArriver; 
+        let dDepart = json.DateDepart;
+        let diff = (Date.parse(dDepart) - Date.parse(dArriver))/1000/60/60/24;
+        // console.log(dArriver+"|"+dDepart)
+        // console.log(typeof(dArriver)+"|"+typeof(dDepart))
+        // console.log("res : " + diff);
+        let datehtml =  "<h3>Date d'arriver  : " + dArriver + 
+                        "<br>Date de depart  : " + dDepart +
+                        "<br>Nombre de jours : " + diff +
+                        "</h3>" ;
+        document.getElementById("date").innerHTML = datehtml;
+        //divers
+        let divershtml = "<h3>Divers : </h3><p>"+json.Divers+"</p>";
+        document.getElementById("divers").innerHTML =divershtml;
+        // console.log(divershtml);
+    });
+  } catch (error) {
+    alert("no data")
+  }
+   
 
 }
 function getMap(location) { 

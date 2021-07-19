@@ -6,32 +6,41 @@ function btnSend() {
         "text": document.getElementById("myText").value,
         "user": User
     }
-    console.log(JSON.stringify(message));
-    $.ajax({
-        url: 'http://localhost:3000/postMessage',
-        dataType: 'json',
-        type: 'post',
-        contentType: 'application/json',
-        data: JSON.stringify(message),
-        processData: false,
-        success: function (data, textStatus, jQxhr) {
-            console.log(JSON.stringify(data));
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    })
+    if(document.getElementById("myText").value == ""){
+        console.log(document.getElementById("myText").value)
+        alert("La textbox est vide")
+        $(document).ready(function(){
+            $("#myText").css("border-color", "red");
+
+        });
+    } else {
+        console.log(JSON.stringify(message));
+        $.ajax({
+            url: 'http://localhost:3000/postMessage',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(message),
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                console.log(JSON.stringify(data));
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        })
+    }
 }
 
 function onload() {
 
     setInterval(function () {
         getMessage();
-        $(function () {
-            console.log("JQ");
-            $('html, body').animate({ scrollTop: $(document).height() }, 5);
-        });
-        console.log("JS");
+        // $(function () {
+        //     // console.log("JQ");
+        //     $('html, body').animate({ scrollTop: $(document).height() }, 5);
+        // });
+        // console.log("JS");
     }, 2000);
 
 

@@ -12,19 +12,29 @@ function add() {
         }
         
     }
-    console.log(JSON.stringify(travel));
-    $.ajax({
-        url: 'http://localhost:3000/postDataTravel',
-        dataType: 'json',
-        type: 'post',
-        contentType: 'application/json',
-        data: JSON.stringify(travel),
-        processData: false,
-        success: function (data, textStatus, jQxhr) {
-            console.log(JSON.stringify(data));
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    })
+    if(document.getElementById("ville").value.length == 0){
+        console.log(document.getElementById("ville").value)
+        alert("le champ ville est vide")
+        $(document).ready(function(){
+            $("#ville").css("border-color", "red");
+
+        });
+    }else{
+        $.ajax({
+            url: 'http://localhost:3000/postDataTravel',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(travel),
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                console.log(JSON.stringify(data));
+                alert("Les données ont été envoyé avec succès");
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+                alert("Les données n'ont pas été envoyé");
+            }
+        })
+    }
 }

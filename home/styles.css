@@ -80,7 +80,9 @@ footer a:hover{
   color: white;
 }
 #map{
+  width: 100%;
   margin-bottom:20px;
   z-index: -1;
+  border-radius: 20px;
 }
 
