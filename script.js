@@ -2,10 +2,9 @@ function connect(){
     
     let data = {
         "username": document.getElementById("username").value,
-        "password":  document.getElementById("password").value,
-        "role": document.getElementById("role").value
+        "password":  document.getElementById("password").value
     }
-    console.log(data)
+    //console.log(data)
     sessionStorage.setItem('user', data.username);
     
     $.ajax({
@@ -19,9 +18,17 @@ function connect(){
             console.log(result);
             sessionStorage.setItem('token', result.accessToken);
             sessionStorage.setItem('role', result.role)
+            // alert("connecter")
+            location.replace("http://localhost/WEB-InfoWorldTour/home/index.html")
         },
         error: function (jqXhr, textStatus, errorThrown) {
+            $(document).ready(function(){
+                $("#password").css("border-color","red")
+                $("#username").css("border-color","red")
+                $("#status").text("Données incorrect !");
+              });
             console.log(errorThrown);
+       
         }
     })
 }

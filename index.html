@@ -5,35 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INDEX</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body >
-    <h2>Raccourcis</h2>
-    <ul>
-        <li>
-            <a href="home/index.html">home</a>
-        </li>
-        <li>
-            <a href="historique/index.html">historique</a>
-        </li>
-        <li>
-            <a href="messagerie/index.html">messagerie</a>
-        </li>
-        <li>
-            <a href="addTravel/index.html">add</a>
-        </li>
-    </ul>
-   
-    <h2>login</h2>
-    <input type="text" id="username">
-    <br>
-    <br>
-    <input type="password" id="password">
-    <br>
-    <br>
-    <input type="text" id="role">
-    <br>
-    <br>
-    <button onclick="connect()">connect</button>
+    <div id="login">
+        <h2>login</h2>
+        <label for="">username : </label>
+        <input type="text" id="username">
+        <br>
+        <label for="">password :</label>
+        <input type="password" id="password">  
+        <br>
+        <button onclick="connect()">se connecter</button>
+        <br>
+        <br>
+
+        <span id="status"></span>
+    </div>
 </body>
 <script src="jquery.js"></script>
 <script src="script.js"></script>
