@@ -1,6 +1,6 @@
 function add() {
     let travel = {
-        "user":"front",
+        "user":sessionStorage.getItem("user"),
         "data": {
             "Ville":document.getElementById("ville").value,
             "Pays":document.getElementById("pays").value,
@@ -20,10 +20,14 @@ function add() {
 
         });
     }else{
+        console.log(sessionStorage.getItem("token"))
         $.ajax({
             url: 'http://localhost:3000/postDataTravel',
             dataType: 'json',
             type: 'post',
+            headers: {
+                "Authorization" : "Bearer " + sessionStorage.getItem("token")
+            },
             contentType: 'application/json',
             data: JSON.stringify(travel),
             processData: false,

@@ -1,6 +1,14 @@
 function onload(){
     getDate();
-    getVoyage();   
+    getVoyage();  
+    console.log(sessionStorage.getItem("user"))
+    if(sessionStorage.getItem("role") != "admin") {
+        console.log(sessionStorage.getItem("role"))
+        $(document).ready(function(){
+            $("#btnAdd").hide();
+
+        });
+    }
 }
 
 function getDate() {
@@ -11,12 +19,20 @@ function getDate() {
             console.log(response.date);
         })
 }
-//GET pour recupere l'historique des données de la db concernant les voyages 
-function getVoyage() {
-    //get pour recupere les messages
-    fetch('http://localhost:3000/getDataTravel/')
-        .then(response => response.json())
-        .then(response => {
+
+function getVoyage(){
+    console.log(sessionStorage.getItem("token"));
+    $.ajax({
+        url: 'http://localhost:3000/getDataTravel',
+        dataType: 'json',
+        type: 'get',
+        headers: {
+            "Authorization" : "Bearer " + sessionStorage.getItem("token")
+        },
+        contentType: 'application/json',
+        processData: false,
+        success: function (response, textStatus, jQxhr) {
+
             let html = "" ;
             let i = 0;
             // console.log(response)
@@ -39,6 +55,10 @@ function getVoyage() {
             document.getElementById("historic").innerHTML =
             document.getElementById("historic").innerHTML + html;
 
-        });
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    })
+
 }
-// <textarea disabled></textarea>

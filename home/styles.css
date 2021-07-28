@@ -6,6 +6,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  background-color: ;
 }
 article{
   margin-bottom:46px ; 
@@ -23,7 +24,7 @@ article{
   border:1px solid rgb(243, 242, 242);
 
 }
-/* Footer */
+/* footer */
 footer {
   position: fixed;
   left: 0;
@@ -32,12 +33,17 @@ footer {
   color: rgb(76, 108, 179);
   text-align: center;
   padding-bottom: 10px;
+
 }
+
 footer a {
+  background-color: white;
+  padding: 5px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-decoration: none;
   color: rgb(76, 108, 179);
 }
-
 footer a:hover{
   color:white;
   background-color: rgb(76, 108, 179);

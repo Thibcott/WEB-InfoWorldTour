@@ -1,5 +1,6 @@
 
 function onload() {
+
   getDate();
   getVoyage();
 }
@@ -12,16 +13,23 @@ function getDate() {
      console.log("GET pour optenir la date du jour : "+response.date);
   });
 }
-function getVoyage() {
-  try {
-    //get pour recupere les messages
-    fetch('http://localhost:3000/getDataTravel/')
-    .then(response => response.json())
-    .then(response => {
+
+function getVoyage(){
+  console.log(sessionStorage.getItem("token"));
+  $.ajax({
+      url: 'http://localhost:3000/getDataTravel',
+      dataType: 'json',
+      type: 'get',
+      headers: {
+          "Authorization" : "Bearer " + sessionStorage.getItem("token")
+      },
+      contentType: 'application/json',
+      processData: false,
+      success: function (response, textStatus, jQxhr) {
+
         let idOfLast = response.length - 1;
         console.log(idOfLast)
         let json = JSON.parse(response[idOfLast].voyData);
-        // console.log(json);
         //location
         let location = json.Ville+", "+json.Pays;
         document.getElementById("location").innerHTML = "<h2>"+location+"</h2>";
@@ -33,9 +41,7 @@ function getVoyage() {
         let dArriver = json.DateArriver; 
         let dDepart = json.DateDepart;
         let diff = (Date.parse(dDepart) - Date.parse(dArriver))/1000/60/60/24;
-        // console.log(dArriver+"|"+dDepart)
-        // console.log(typeof(dArriver)+"|"+typeof(dDepart))
-        // console.log("res : " + diff);
+        
         let datehtml =  "<h3>Date d'arriver  : " + dArriver + 
                         "<br>Date de depart  : " + dDepart +
                         "<br>Nombre de jours : " + diff +
@@ -45,11 +51,12 @@ function getVoyage() {
         let divershtml = "<h3>Divers : </h3><p>"+json.Divers+"</p>";
         document.getElementById("divers").innerHTML =divershtml;
         // console.log(divershtml);
-    });
-  } catch (error) {
-    alert("no data")
-  }
-   
+
+      },
+      error: function (jqXhr, textStatus, errorThrown) {
+          console.log(errorThrown);
+      }
+  })
 
 }
 function getMap(location) { 
@@ -77,7 +84,7 @@ function getMap(location) {
           container: "map",
           style: "mapbox://styles/mapbox/streets-v11",
           center: feature.center,
-          zoom: 5,
+          zoom: 7,
         });
 
         // Create a marker and add it to the map.
