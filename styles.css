@@ -34,6 +34,8 @@ input[type=text],input[type=password],select, textarea {
     padding: 20px;
     margin:10px;
     align-items: center;
+    max-width: 400px;
+
 }
 #status{
     color: red;

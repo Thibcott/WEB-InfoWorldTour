@@ -38,6 +38,7 @@ function add() {
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);
                 alert("Les données n'ont pas été envoyé");
+                
             }
         })
     }

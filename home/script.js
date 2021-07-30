@@ -3,6 +3,7 @@ function onload() {
 
   getDate();
   getVoyage();
+  
 }
 
 function getDate() {
@@ -50,11 +51,13 @@ function getVoyage(){
         //divers
         let divershtml = "<h3>Divers : </h3><p>"+json.Divers+"</p>";
         document.getElementById("divers").innerHTML =divershtml;
-        // console.log(divershtml);
 
       },
       error: function (jqXhr, textStatus, errorThrown) {
           console.log(errorThrown);
+          if(errorThrown == "Forbidden"){
+              location.replace("http://localhost/WEB-InfoWorldTour/index.html")
+          }
       }
   })
 
@@ -91,4 +94,9 @@ function getMap(location) {
         new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
       }
     });
+}
+
+function logout() {
+    console.log(sessionStorage.getItem("token"));
+    sessionStorage.clear()
 }
