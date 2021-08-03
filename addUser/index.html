@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0">
+    <title>InfoWorldTour - historique</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body onload="getUsers()" >
+    <header>
+        <div class="navbar">
+            <a href="../home/index.html">InfoWorldTour</a>
+            <a href="../historique/index.html" >Historique</a>
+            <a href="../messagerie/index.html">Messagerie</a>
+        </div>
+    </header>
+    <article>
+        <h3>Formulaire pour ajouter des utilisateurs</h3>
+
+        <div class="container">
+            <input  type="text" 
+                    id="username"
+                    placeholder="username">
+            <input  type="password"
+                    id="password"
+                    placeholder="password">
+            <input  type="password" 
+                    id="passwordc" 
+                    placeholder="password confirmation">
+            <select id="role">
+                <option value=""> - </option>
+                <option value="admin">admin</option>
+                <option value="view">view</option>
+            </select>    
+            <button onclick="add()">Ajouter</button>
+        </div>  
+            <br>
+        <div>
+            <h3>User table</h3>
+            <table id="userData" >
+                <tr>
+                    <th>Id</th>
+                    <th>username</th>
+                    <th>role</th>
+                <tr>    
+            </table> 
+        </div>    
+    </article>
+    <footer>
+            <a href="https://github.com/Thibcott">
+                Developed by Thibcott
+            </a>
+    </footer>
+    <script src="../jquery.js"></script>
+    <script src="Script1.js"></script>
+</body>
+</html>

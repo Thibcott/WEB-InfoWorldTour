@@ -31,6 +31,8 @@ function btnSend() {
             }
         })
     }
+    document.getElementById("myText").value = "";
+
 }
 
 function onload() {

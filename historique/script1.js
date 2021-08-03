@@ -2,7 +2,7 @@ function onload(){
     //getDate();
     getVoyage();  
     console.log(sessionStorage.getItem("user"))
-    if(sessionStorage.getItem("role") != "admin") {
+    if(sessionStorage.getItem("role") == "view") {
         console.log(sessionStorage.getItem("role"))
         $(document).ready(function(){
             $("#btnAdd").hide();

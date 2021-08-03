@@ -16,7 +16,7 @@ function getDate() {
 }
 
 function getVoyage(){
-  console.log(sessionStorage.getItem("token"));
+  //console.log(sessionStorage.getItem("token"));
   $.ajax({
       url: 'http://localhost:3000/getDataTravel',
       dataType: 'json',
@@ -29,7 +29,7 @@ function getVoyage(){
       success: function (response, textStatus, jQxhr) {
 
         let idOfLast = response.length - 1;
-        console.log(idOfLast)
+        //console.log(idOfLast)
         let json = JSON.parse(response[idOfLast].voyData);
         //location
         let location = json.Ville+", "+json.Pays;
@@ -63,7 +63,7 @@ function getVoyage(){
 
 }
 function getMap(location) { 
-    console.log(location);
+    //console.log(location);
     mapboxgl.accessToken =
     "pk.eyJ1IjoidGhpYmNvdHQiLCJhIjoiY2tkN2htcmJhMDV4bjJ4bXM1cGhvb2U5byJ9.q0SeEGAvzniKSdicQpbxlA";
      var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
@@ -87,7 +87,7 @@ function getMap(location) {
           container: "map",
           style: "mapbox://styles/mapbox/streets-v11",
           center: feature.center,
-          zoom: 7,
+          zoom:7 ,
         });
 
         // Create a marker and add it to the map.
