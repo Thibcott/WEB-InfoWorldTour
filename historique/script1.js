@@ -2,11 +2,10 @@ function onload(){
     //getDate();
     getVoyage();  
     console.log(sessionStorage.getItem("user"))
-    if(sessionStorage.getItem("role") == "view") {
-        console.log(sessionStorage.getItem("role"))
+    if(sessionStorage.getItem("user") == "view") {
+        console.log(sessionStorage.getItem("user"))
         $(document).ready(function(){
             $("#btnAdd").hide();
-
         });
     }
 }
